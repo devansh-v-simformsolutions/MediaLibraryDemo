@@ -40,7 +40,21 @@ class MediaManager {
         guard let mediaUrl = mediaUrl else {
             return
         }
-        downloadFile(url: mediaUrl)
+        if let filePath = getFileFromLocal() {
+            localUrl = filePath
+            openQuickLook()
+        } else {
+            downloadFile(url: mediaUrl)
+        }
+    }
+    
+    func getFileFromLocal() -> URL? {
+        guard let fileName = mediaUrl?.lastPathComponent else {
+            return nil
+        }
+        var cacheDir = FileManager.default.urls(for: .cachesDirectory, in: .userDomainMask).first!
+        cacheDir.appendPathComponent(fileName)
+        return FileManager.default.fileExists(atPath: cacheDir.path) ? URL(fileURLWithPath: cacheDir.path) : nil
     }
     
     func downloadFile(url: URL) {
@@ -55,21 +69,26 @@ class MediaManager {
                         return
                     }
                     self.localUrl = value.url
-                    let previewController = QLPreviewController()
-                    previewController.dataSource = self
-                    if var topController = UIApplication.shared.windows.first?.rootViewController  {
-                        while let presentedViewController = topController.presentedViewController {
-                            topController = presentedViewController
-                        }
-                        topController.present(previewController, animated: true, completion: nil)
-                    }
+                    self.openQuickLook()
                 }
             }
+    }
+    
+    func openQuickLook() {
+        let previewController = QLPreviewController()
+        previewController.dataSource = self
+        if var topController = UIApplication.shared.windows.first?.rootViewController  {
+            while let presentedViewController = topController.presentedViewController {
+                topController = presentedViewController
+            }
+            topController.present(previewController, animated: true, completion: nil)
+        }
     }
 }
 
 extension MediaManager: QLPreviewControllerDataSource {
     func previewController(_ controller: QLPreviewController, previewItemAt index: Int) -> QLPreviewItem {
+        print("===> \(String(describing: localUrl))")
         guard let url = localUrl else {
             fatalError()
         }

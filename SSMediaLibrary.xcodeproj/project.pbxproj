@@ -33,6 +33,7 @@
 		1A09B263267A1121006CF786 /* SSMediaLibrary.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SSMediaLibrary.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1A09B276267A1313006CF786 /* MediaManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MediaManager.swift; sourceTree = "<group>"; };
 		1A856D20267A4C9F00C56644 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
+		1A8FE6EC267E04EE00D3CE4C /* SSMediaLibrary--iOS--Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "SSMediaLibrary--iOS--Info.plist"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,6 +57,7 @@
 		1A09B24D267A111F006CF786 = {
 			isa = PBXGroup;
 			children = (
+				1A8FE6EC267E04EE00D3CE4C /* SSMediaLibrary--iOS--Info.plist */,
 				1A09B252267A111F006CF786 /* Shared */,
 				1A09B25E267A1121006CF786 /* Products */,
 			);
@@ -327,6 +329,10 @@
 				CURRENT_PROJECT_VERSION = 1;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "SSMediaLibrary--iOS--Info.plist";
+				INFOPLIST_KEY_CFBundleExecutable = SSMediaLibrary;
+				INFOPLIST_KEY_CFBundleName = SSMediaLibrary;
+				INFOPLIST_KEY_CFBundleVersion = 1;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -356,6 +362,10 @@
 				CURRENT_PROJECT_VERSION = 1;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "SSMediaLibrary--iOS--Info.plist";
+				INFOPLIST_KEY_CFBundleExecutable = SSMediaLibrary;
+				INFOPLIST_KEY_CFBundleName = SSMediaLibrary;
+				INFOPLIST_KEY_CFBundleVersion = 1;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;

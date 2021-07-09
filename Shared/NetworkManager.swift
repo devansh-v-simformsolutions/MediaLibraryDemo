@@ -97,7 +97,7 @@ extension URLSession {
                 }
                 do {
                     let cacheDir = FileManager.default.urls(for: .cachesDirectory, in: .userDomainMask).first!
-                    let fileUrl = cacheDir.appendingPathComponent(self?.request.url?.lastPathComponent ?? "error")
+                    let fileUrl = cacheDir.appendingPathComponent(self?.request.url?.lastPathComponent ?? UUID().uuidString)
                     try FileManager.default.moveItem(atPath: url.path, toPath: fileUrl.path)
                     _ = self?.subscriber?.receive((url: fileUrl, response: response))
                     self?.subscriber?.receive(completion: .finished)

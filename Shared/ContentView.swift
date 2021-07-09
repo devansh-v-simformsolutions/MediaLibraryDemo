@@ -23,7 +23,7 @@ struct ContentView: View {
     }
 
     private func addItem() {
-        let url = URL(string: "http://www.africau.edu/images/default/sample.pdf")
+        let url = URL(string: "https://file-examples-com.github.io/uploads/2017/04/file_example_MP4_480_1_5MG.mp4")
         let manager = MediaManager(file: url!)
         manager.show()
     }
