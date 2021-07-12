@@ -8,33 +8,28 @@
 import UIKit
 import Combine
 import QuickLook
+import AVKit
 
 class MediaManager {
-    var mediaUrl: URL? {
-        didSet {
-            isLocalFile = mediaUrl?.isFileURL ?? false
-        }
-    }
-    var imageFile: UIImage?
-    var isLocalFile: Bool = false
-    private var mediaExtension: String?
+    var mediaUrl: URL?
+    var mediaExtension: UTI?
     var sinkOperation: AnyCancellable?
     var localUrl: URL?
-    
-    init(file: Any) {
-        switch file {
-        case is URL:
-            guard let url = file as? URL else { return }
-            mediaUrl = url
-            mediaExtension = url.pathExtension
-        case is UIImage:
-            guard let image = file as? UIImage else { return }
-            imageFile = image
-        default:
-            break
+    var topVC: UIViewController? {
+        guard var topController = UIApplication.shared.windows.first?.rootViewController
+        else { return nil }
+        
+        while let presentedViewController = topController.presentedViewController {
+            topController = presentedViewController
         }
+        return topController
     }
     
+    init(file: Any) {
+        guard let url = file as? URL else { return }
+        mediaUrl = url
+        mediaExtension = UTI(withExtension: url.pathExtension)
+    }
     
     func show() {
         guard let mediaUrl = mediaUrl else {
@@ -42,17 +37,16 @@ class MediaManager {
         }
         if let filePath = getFileFromLocal() {
             localUrl = filePath
-            openQuickLook()
+            openFile()
         } else {
             downloadFile(url: mediaUrl)
         }
     }
     
     func getFileFromLocal() -> URL? {
-        guard let fileName = mediaUrl?.lastPathComponent else {
-            return nil
-        }
-        var cacheDir = FileManager.default.urls(for: .cachesDirectory, in: .userDomainMask).first!
+        guard let fileName = mediaUrl?.lastPathComponent,
+              var cacheDir = FileManager.default.urls(for: .cachesDirectory, in: .userDomainMask).first
+        else { return nil }
         cacheDir.appendPathComponent(fileName)
         return FileManager.default.fileExists(atPath: cacheDir.path) ? URL(fileURLWithPath: cacheDir.path) : nil
     }
@@ -69,20 +63,41 @@ class MediaManager {
                         return
                     }
                     self.localUrl = value.url
-                    self.openQuickLook()
+                    self.openFile()
                 }
             }
     }
     
-    func openQuickLook() {
+    func openFile() {
+        guard let mediaExtension = mediaExtension else {
+            return
+        }
+        switch mediaExtension {
+        case .html:
+            break
+        case .video, .movie, .quickTimeMovie, .mpeg2Video, .appleProtectedMPEG4Video, .aviMovie, .audiovisualContent, .mpeg4, .wmv:
+            openVideoPlayer()
+        default:
+            openWithQuickLook()
+        }
+    }
+    
+    func openVideoPlayer() {
+        guard let mediaUrl = mediaUrl else {
+            return
+        }
+        let player = AVPlayer(url: mediaUrl)
+        let playerViewController = AVPlayerViewController()
+        playerViewController.player = player
+        topVC?.present(playerViewController, animated: true) {
+            playerViewController.player!.play()
+        }
+    }
+    
+    func openWithQuickLook() {
         let previewController = QLPreviewController()
         previewController.dataSource = self
-        if var topController = UIApplication.shared.windows.first?.rootViewController  {
-            while let presentedViewController = topController.presentedViewController {
-                topController = presentedViewController
-            }
-            topController.present(previewController, animated: true, completion: nil)
-        }
+        topVC?.present(previewController, animated: true, completion: nil)
     }
 }
 

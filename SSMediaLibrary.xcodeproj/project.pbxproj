@@ -21,6 +21,8 @@
 		1A09B278267A1313006CF786 /* MediaManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A09B276267A1313006CF786 /* MediaManager.swift */; };
 		1A856D21267A4C9F00C56644 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A856D20267A4C9F00C56644 /* NetworkManager.swift */; };
 		1A856D22267A4C9F00C56644 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A856D20267A4C9F00C56644 /* NetworkManager.swift */; };
+		1AB29F0526997D430087F72E /* UTI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AB29F0426997D430087F72E /* UTI.swift */; };
+		1AB29F0626997D430087F72E /* UTI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AB29F0426997D430087F72E /* UTI.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -34,6 +36,7 @@
 		1A09B276267A1313006CF786 /* MediaManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MediaManager.swift; sourceTree = "<group>"; };
 		1A856D20267A4C9F00C56644 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 		1A8FE6EC267E04EE00D3CE4C /* SSMediaLibrary--iOS--Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "SSMediaLibrary--iOS--Info.plist"; sourceTree = "<group>"; };
+		1AB29F0426997D430087F72E /* UTI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UTI.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -73,6 +76,7 @@
 				1A09B253267A111F006CF786 /* SSMediaLibrary.xcdatamodeld */,
 				1A09B276267A1313006CF786 /* MediaManager.swift */,
 				1A856D20267A4C9F00C56644 /* NetworkManager.swift */,
+				1AB29F0426997D430087F72E /* UTI.swift */,
 			);
 			path = Shared;
 			sourceTree = "<group>";
@@ -187,6 +191,7 @@
 				1A856D21267A4C9F00C56644 /* NetworkManager.swift in Sources */,
 				1A09B266267A1121006CF786 /* SSMediaLibraryApp.swift in Sources */,
 				1A09B26A267A1121006CF786 /* Persistence.swift in Sources */,
+				1AB29F0526997D430087F72E /* UTI.swift in Sources */,
 				1A09B264267A1121006CF786 /* SSMediaLibrary.xcdatamodeld in Sources */,
 				1A09B268267A1121006CF786 /* ContentView.swift in Sources */,
 				1A09B277267A1313006CF786 /* MediaManager.swift in Sources */,
@@ -200,6 +205,7 @@
 				1A856D22267A4C9F00C56644 /* NetworkManager.swift in Sources */,
 				1A09B267267A1121006CF786 /* SSMediaLibraryApp.swift in Sources */,
 				1A09B26B267A1121006CF786 /* Persistence.swift in Sources */,
+				1AB29F0626997D430087F72E /* UTI.swift in Sources */,
 				1A09B265267A1121006CF786 /* SSMediaLibrary.xcdatamodeld in Sources */,
 				1A09B269267A1121006CF786 /* ContentView.swift in Sources */,
 				1A09B278267A1313006CF786 /* MediaManager.swift in Sources */,
